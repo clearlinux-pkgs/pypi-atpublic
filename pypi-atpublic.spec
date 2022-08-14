@@ -4,7 +4,7 @@
 #
 Name     : pypi-atpublic
 Version  : 3.0.1
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/a0/62/0d20716e53e9996c591051e6b76c3e51229c26e017f82a112c3eddf207df/atpublic-3.0.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/a0/62/0d20716e53e9996c591051e6b76c3e51229c26e017f82a112c3eddf207df/atpublic-3.0.1.tar.gz
 Summary  : Keep all y'all's __all__'s in sync
