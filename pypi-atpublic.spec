@@ -4,13 +4,14 @@
 # Using build pattern: pyproject
 #
 Name     : pypi-atpublic
-Version  : 3.1.2
-Release  : 15
-URL      : https://files.pythonhosted.org/packages/84/b5/d14aa11f7b37e5410209c4cc1ec4dcccc47ebe6c5e35ad21e7240de54952/atpublic-3.1.2.tar.gz
-Source0  : https://files.pythonhosted.org/packages/84/b5/d14aa11f7b37e5410209c4cc1ec4dcccc47ebe6c5e35ad21e7240de54952/atpublic-3.1.2.tar.gz
+Version  : 4.0
+Release  : 16
+URL      : https://files.pythonhosted.org/packages/4f/c8/22e1e6e2fe2cbe7a789a30d6288db3c1dbdbbe06af0d61277a97e4960b9e/atpublic-4.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/4f/c8/22e1e6e2fe2cbe7a789a30d6288db3c1dbdbbe06af0d61277a97e4960b9e/atpublic-4.0.tar.gz
 Summary  : Keep all y'all's __all__'s in sync
 Group    : Development/Tools
 License  : Apache-2.0
+Requires: pypi-atpublic-license = %{version}-%{release}
 Requires: pypi-atpublic-python = %{version}-%{release}
 Requires: pypi-atpublic-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -32,6 +33,14 @@ This library provides two very simple decorators that document the
 *publicness* of the names in your module.  They keep your module's ``__all__``
 in sync so you don't have to.
 
+%package license
+Summary: license components for the pypi-atpublic package.
+Group: Default
+
+%description license
+license components for the pypi-atpublic package.
+
+
 %package python
 Summary: python components for the pypi-atpublic package.
 Group: Default
@@ -52,10 +61,10 @@ python3 components for the pypi-atpublic package.
 
 
 %prep
-%setup -q -n atpublic-3.1.2
-cd %{_builddir}/atpublic-3.1.2
+%setup -q -n atpublic-4.0
+cd %{_builddir}/atpublic-4.0
 pushd ..
-cp -a atpublic-3.1.2 buildavx2
+cp -a atpublic-4.0 buildavx2
 popd
 
 %build
@@ -63,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685635941
+export SOURCE_DATE_EPOCH=1686062103
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -87,6 +96,8 @@ popd
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-atpublic
+cp %{_builddir}/atpublic-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-atpublic/c327604942de83b8c420c7a3a0fa7772729eb962 || :
 pip install --root=%{buildroot} --no-deps --ignore-installed dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -103,6 +114,10 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-atpublic/c327604942de83b8c420c7a3a0fa7772729eb962
 
 %files python
 %defattr(-,root,root,-)
