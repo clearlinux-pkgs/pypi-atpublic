@@ -1,5 +1,5 @@
 PKG_NAME := pypi-atpublic
-URL = https://files.pythonhosted.org/packages/4f/c8/22e1e6e2fe2cbe7a789a30d6288db3c1dbdbbe06af0d61277a97e4960b9e/atpublic-4.0.tar.gz
+URL = https://files.pythonhosted.org/packages/ae/5b/61439625efcd11dfa2f299d60183476f58a138020c2f9b6a4e46b0e74d78/atpublic-4.1.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
